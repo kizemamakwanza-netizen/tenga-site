@@ -1,30 +1,23 @@
+// ATUALIZADO - Links de Rodapé agora funcionam
 import Image from 'next/image';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
-export function Footer() {
-  const socialLinks = [
-    { label: 'Facebook', href: '#' },
-    { label: 'Instagram', href: '#' },
-    { label: 'LinkedIn', href: '#' },
-  ];
+// Ícones simples para redes sociais (placeholders)
+const SocialIcon = ({
+  href,
+  label,
+}: {
+  href: string;
+  label: string;
+}) => (
+  <a href={href} className="text-gray-400 hover:text-gray-300">
+    <span className="sr-only">{label}</span>
+    <div className="w-6 h-6 bg-gray-700 rounded-full hover:bg-gray-600 transition-colors"></div>
+  </a>
+);
 
-  const footerNav = [
-    {
-      title: 'Empresa',
-      links: [
-        { label: 'Sobre Nós', href: '#' },
-        { label: 'Carreiras', href: '#' },
-        { label: 'Imprensa', href: '#' },
-      ],
-    },
-    {
-      title: 'Legal',
-      links: [
-        { label: 'Privacidade', href: '#' },
-        { label: 'Termos', href: '#' },
-      ],
-    },
-  ];
-
+export default function Footer() {
   return (
     <footer className="bg-gray-800 text-gray-300" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -32,7 +25,7 @@ export function Footer() {
       </h2>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-          {/* Logo e Info */}
+          {/* Coluna 1: Logo e Social */}
           <div className="space-y-8 xl:col-span-1">
             <Image
               src="https://placehold.co/140x48/FFFFFF/000000.png?text=Tenga"
@@ -46,81 +39,81 @@ export function Footer() {
               compradores.
             </p>
             <div className="flex space-x-6">
-              {/* TODO: Adicionar ícones sociais */}
-              {socialLinks.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-gray-400 hover:text-gray-300"
-                >
-                  <span className="sr-only">{item.label}</span>
-                  {/* Ícone virá aqui */}
-                  <div className="w-6 h-6 bg-gray-700 rounded-full"></div>
-                </a>
-              ))}
+              <SocialIcon href="#" label="Facebook" />
+              <SocialIcon href="#" label="Instagram" />
+              <SocialIcon href="#" label="LinkedIn" />
             </div>
           </div>
 
-          {/* Links de Navegação */}
+          {/* Coluna 2 e 3: Links */}
           <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
-              {footerNav.slice(0, 1).map((group) => (
-                <div key={group.title}>
-                  <h3 className="text-sm font-semibold tracking-wider text-gray-200 uppercase">
-                    {group.title}
-                  </h3>
-                  <ul role="list" className="mt-4 space-y-4">
-                    {group.links.map((item) => (
-                      <li key={item.label}>
-                        <a
-                          href={item.href}
-                          className="text-base text-gray-400 hover:text-gray-300"
-                        >
-                          {item.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-              {footerNav.slice(1, 2).map((group) => (
-                <div key={group.title} className="mt-12 md:mt-0">
-                  <h3 className="text-sm font-semibold tracking-wider text-gray-200 uppercase">
-                    {group.title}
-                  </h3>
-                  <ul role="list" className="mt-4 space-y-4">
-                    {group.links.map((item) => (
-                      <li key={item.label}>
-                        <a
-                          href={item.href}
-                          className="text-base text-gray-400 hover:text-gray-300"
-                        >
-                          {item.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-            
-            {/* Newsletter (pode ser adicionado mais tarde) */}
-            <div className="md:grid md:grid-cols-1 md:gap-8">
-               {/* <h3 className="text-sm font-semibold tracking-wider text-gray-200 uppercase">
-                  Subscreva a nossa newsletter
+              {/* Links da Empresa */}
+              <div>
+                <h3 className="text-sm font-semibold tracking-wider text-gray-200 uppercase">
+                  Empresa
                 </h3>
-                <p className="mt-4 text-base text-gray-400">
-                  Receba as últimas novidades e ofertas.
-                </p> */}
+                <ul role="list" className="mt-4 space-y-4">
+                  <li>
+                    <Link
+                      href="/sobre"
+                      className="text-base text-gray-400 hover:text-gray-300"
+                    >
+                      Sobre Nós
+                    </Link>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-base text-gray-400 hover:text-gray-300"
+                    >
+                      Carreiras
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-base text-gray-400 hover:text-gray-300"
+                    >
+                      Imprensa
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              {/* Links Legais (ATUALIZADOS) */}
+              <div className="mt-12 md:mt-0">
+                <h3 className="text-sm font-semibold tracking-wider text-gray-200 uppercase">
+                  Legal
+                </h3>
+                <ul role="list" className="mt-4 space-y-4">
+                  <li>
+                    <Link
+                      href="/privacidade"
+                      className="text-base text-gray-400 hover:text-gray-300"
+                    >
+                      Privacidade
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/termos"
+                      className="text-base text-gray-400 hover:text-gray-300"
+                    >
+                      Termos
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
-
+            {/* ... (outras colunas de links podem ir aqui) ... */}
           </div>
         </div>
 
         {/* Linha de Copyright */}
         <div className="mt-12 border-t border-gray-700 pt-8">
           <p className="text-base text-gray-400 xl:text-center">
-            &copy; {new Date().getFullYear()} Tenga, Lda. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} Tenga, Lda. Todos os direitos
+            reservados.
           </p>
         </div>
       </div>

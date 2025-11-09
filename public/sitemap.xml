@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- URL Corrigida (sem www) -->
   <url>
-    <loc>https://www.tenga.co.mz/</loc>
+    <loc>https://tenga.co.mz/</loc>
     <lastmod>2025-11-09</lastmod>
     <priority>1.00</priority>
   </url>
+  <!-- URL Corrigida (sem www) -->
   <url>
-    <loc>https://www.tenga.co.mz/sobre</loc>
+    <loc>https://tenga.co.mz/sobre</loc>
     <lastmod>2025-11-09</lastmod>
     <priority>0.80</priority>
   </url>
+  <!-- URL Corrigida (sem www) -->
   <url>
-    <loc>https://www.tenga.co.mz/servicos</loc>
+    <loc>https://tenga.co.mz/servicos</loc>
     <lastmod>2025-11-09</lastmod>
     <priority>0.80</priority>
   </url>
+  <!-- URL Corrigida (sem www) -->
   <url>
-    <loc>https://www.tenga.co.mz/contato</loc>
+    <loc>https://tenga.co.mz/contato</loc>
     <lastmod>2025-11-09</lastmod>
     <priority>0.80</priority>
   </url>

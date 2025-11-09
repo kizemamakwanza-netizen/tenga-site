@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.google.com/search?q=https://www.tenga.co.mz/sitemap.xml
+Sitemap: https://www.google.com/search?q=https://tenga.co.mz/sitemap.xml

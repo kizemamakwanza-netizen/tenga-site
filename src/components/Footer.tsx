@@ -1,25 +1,22 @@
 // ATUALIZADO - Links de Rodapé agora funcionam
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 
-// Ícones simples para redes sociais (placeholders)
-const SocialIcon = ({
-  href,
-  label,
-}: {
-  href: string;
-  label: string;
-}) => (
+// Icones simples para redes sociais (Placeholders)
+const SocialIcon = ({ href, label }: { href: string; label: string }) => (
   <a href={href} className="text-gray-400 hover:text-gray-300">
     <span className="sr-only">{label}</span>
+    {/* Placeholder visual para o ícone */}
     <div className="w-6 h-6 bg-gray-700 rounded-full hover:bg-gray-600 transition-colors"></div>
   </a>
 );
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-gray-300" aria-labelledby="footer-heading">
+    <footer
+      className="bg-gray-800 text-gray-300"
+      aria-labelledby="footer-heading"
+    >
       <h2 id="footer-heading" className="sr-only">
         Rodapé
       </h2>
@@ -28,6 +25,7 @@ export default function Footer() {
           {/* Coluna 1: Logo e Social */}
           <div className="space-y-8 xl:col-span-1">
             <Image
+              // CORREÇÃO: Usar o .png
               src="https://placehold.co/140x48/FFFFFF/000000.png?text=Tenga"
               alt="Logo Tenga (Branco)"
               width={140}
@@ -80,7 +78,8 @@ export default function Footer() {
                   </li>
                 </ul>
               </div>
-              {/* Links Legais (ATUALIZADOS) */}
+
+              {/* Links Legais (A SECÇÃO ATUALIZADA) */}
               <div className="mt-12 md:mt-0">
                 <h3 className="text-sm font-semibold tracking-wider text-gray-200 uppercase">
                   Legal
@@ -102,10 +101,18 @@ export default function Footer() {
                       Termos
                     </Link>
                   </li>
+                  {/* NOVO LINK ADICIONADO AQUI */}
+                  <li>
+                    <Link
+                      href="/exclusao"
+                      className="text-base text-gray-400 hover:text-gray-300"
+                    >
+                      Exclusão de Conta
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>
-            {/* ... (outras colunas de links podem ir aqui) ... */}
           </div>
         </div>
 

@@ -7,6 +7,10 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import * as gtag from '@/lib/gtag'; // Importa o nosso novo ficheiro
 import Head from 'next/head';
+import Script from 'next/script'; // Importa o componente Script
+
+// Lê o ID do AdSense do .env.local
+const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || '';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -37,6 +41,41 @@ export default function App({ Component, pageProps }: AppProps) {
         {/* Viewport é essencial para o design responsivo (mobile) */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
+
+      {/* --- SCRIPTS DE TERCEIROS --- */}
+
+      {/* 1. Google Analytics (Já implementado) */}
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gtag.GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
+
+      {/* 2. Google AdSense (NOVO) */}
+      {/* Adiciona o script do AdSense que a Google pediu. */}
+      {/* Usamos "crossOrigin" como o snippet pedia. */}
+      <Script
+        id="adsense-init"
+        strategy="afterInteractive"
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+        crossOrigin="anonymous"
+      />
+
+      {/* --- FIM DOS SCRIPTS --- */}
 
       {/* O Header aparece em todas as páginas */}
       <Header />

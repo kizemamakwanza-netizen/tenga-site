@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   // --- GOOGLE ANALYTICS ---
-  // Este useEffect corre sempre que a rota (página) muda
+  // Este useEffect corre sempre que a rota  muda
   useEffect(() => {
     // Se o ID do Analytics existir (lido do .env.local), regista a "pageview"
     if (gtag.GA_TRACKING_ID) {

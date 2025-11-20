@@ -7,8 +7,10 @@ import {
   UsersIcon,
 } from '@heroicons/react/24/outline';
 import Image from 'next/image';
+import AdBanner from '@/components/AdBanner'; // <--- 1. IMPORTAR O COMPONENTE
 
 const features = [
+  // ... (o teu código existente dos features mantem-se igual)
   {
     name: 'Para Compradores',
     description:
@@ -17,9 +19,7 @@ const features = [
   },
   {
     name: 'Para Vendedores',
-    description:
-      'Abra a sua loja digital em minutos e alcance milhares de clientes em Moçambique.',
-    // CORREÇÃO AQUI: Usar o nome corrigido
+    description: 'Abra a sua loja digital em minutos e alcance milhares de clientes em Moçambique.',
     icon: BuildingStorefrontIcon,
   },
   {
@@ -57,24 +57,16 @@ export default function Home() {
           merecem. Encontre produtos, serviços e muito mais.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-          <motion.a
-            href="#" // TODO: Adicionar link da App Store
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center justify-center px-8 py-3 bg-blue-600 text-white text-base font-medium rounded-md shadow-md hover:bg-blue-700 transition-colors duration-300"
-          >
-            Baixar o App (iOS)
-          </motion.a>
-          <motion.a
-            href="#" // TODO: Adicionar link da Play Store
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center justify-center px-8 py-3 bg-gray-900 text-white text-base font-medium rounded-md shadow-md hover:bg-gray-700 transition-colors duration-300"
-          >
-            Baixar o App (Android)
-          </motion.a>
+           {/* ... (teus botões de download mantêm-se iguais) ... */}
+           <motion.a href="#" className="inline-flex items-center justify-center px-8 py-3 bg-blue-600 text-white text-base font-medium rounded-md shadow-md hover:bg-blue-700 transition-colors duration-300">Baixar o App (iOS)</motion.a>
+           <motion.a href="#" className="inline-flex items-center justify-center px-8 py-3 bg-gray-900 text-white text-base font-medium rounded-md shadow-md hover:bg-gray-700 transition-colors duration-300">Baixar o App (Android)</motion.a>
         </div>
       </motion.section>
+
+      {/* --- ANÚNCIO 1: Entre o Hero e a Imagem --- */}
+      <div className="container mx-auto px-4">
+         <AdBanner  className="my-8" />
+      </div>
 
       {/* Placeholder para imagem do App */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -91,6 +83,10 @@ export default function Home() {
       {/* Features Section */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            
+          {/* --- ANÚNCIO 2: Antes do título das features --- */}
+          <AdBanner className="mb-16" />
+
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-gray-900">
               Tudo o que precisas, num só lugar

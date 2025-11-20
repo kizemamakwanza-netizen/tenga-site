@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import AdBanner from "@/components/AdBanner";
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
@@ -11,30 +12,29 @@ export default function Contato() {
   const [enviado, setEnviado] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    const templateParams = {
-      from_name: nome,
-      from_email: email,
-      message: mensagem,
-    };
+    try {
+      const templateParams = {
+        from_name: nome,
+        from_email: email,
+        message: mensagem,
+      };
 
-    await emailjs.send(
-      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-      templateParams,
-      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-    );
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
 
-    console.log('Mensagem enviada com sucesso!');
-    setEnviado(true);
-  } catch (error) {
-    console.error('Erro ao enviar mensagem:', error);
-    alert('Ocorreu um erro ao enviar sua mensagem. Tente novamente.');
-  }
-};
-
+      console.log('Mensagem enviada com sucesso!');
+      setEnviado(true);
+    } catch (error) {
+      console.error('Erro ao enviar mensagem:', error);
+      alert('Ocorreu um erro ao enviar sua mensagem. Tente novamente.');
+    }
+  };
 
   return (
     <>
@@ -57,14 +57,19 @@ export default function Contato() {
             Tem alguma dúvida ou sugestão? Gostaríamos de ouvir de si.
           </p>
 
+          {/* --- ANÚNCIO ADSENSE --- */}
+          <div className="mt-6 flex justify-center">
+            <AdBanner slot="SEU_SLOT_ID_AQUI" />
+          </div>
+          {/* --- FIM DO ANÚNCIO --- */}
+
           {enviado ? (
             <div className="mt-12 p-8 bg-white rounded-lg shadow-lg text-center">
               <h2 className="text-2xl font-semibold text-green-600">
                 Obrigado!
               </h2>
               <p className="mt-2 text-gray-600">
-                A sua mensagem foi enviada com sucesso. Entraremos em contato em
-                breve.
+                A sua mensagem foi enviada com sucesso. Entraremos em contato em breve.
               </p>
             </div>
           ) : (
